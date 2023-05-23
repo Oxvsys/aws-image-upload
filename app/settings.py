@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "blog",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -138,13 +139,8 @@ AWS_S3_SIGNATURE_VERSION = config("AWS_S3_SIGNATURE_VERSION")
 AWS_S3_ADDRESSING_STYLE = config("AWS_S3_ADDRESSING_STYLE")
 AWS_S3_FILE_OVERWRITE = config("AWS_S3_FILE_OVERWRITE")
 AWS_DEFAULT_ACL = config("AWS_DEFAULT_ACL")
-AWS_S3_VERIFY = config("AWS_S3_VERIFY")
-AWS_LOCATION = config("AWS")
+AWS_S3_VERIFY = config("AWS_S3_VERIFY", cast=bool)
+AWS_LOCATION = config("AWS_LOCATION")
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400",}
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 DEFAULT_FILE_STORAGE = "app.storages.MediaStorage"
-
-# STORAGES = {
-#     "default": "app.storages.MediaStorage",
-#     "staticfiles": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}
-# }
